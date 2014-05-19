@@ -24,7 +24,7 @@ public class Community extends WebPageHelpers {
 
 
 
-	public void openPostsQuestions() { //GITHUB TEST COMMENT!!!
+	public void openPostsQuestions() { //Another test comment to check from Github mac app
 
 		communityURL = getDriver().getCurrentUrl().toString();
 		communityURL = communityURL + "/posts";
