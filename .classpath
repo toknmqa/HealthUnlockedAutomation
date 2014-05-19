@@ -6,7 +6,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="target/selenium-webdriver-framework-1.0-SNAPSHOT.jar"/>
 	<classpathentry kind="lib" path="C:/Dev/selenium-2.41.0/selenium-java-2.41.0-srcs.jar"/>
 	<classpathentry kind="lib" path="C:/Dev/selenium-2.41.0/selenium-java-2.41.0.jar"/>
 	<classpathentry kind="lib" path="C:/Dev/apache-mime4j-0.6.jar"/>
