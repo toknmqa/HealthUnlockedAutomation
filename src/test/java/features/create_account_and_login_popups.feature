@@ -13,11 +13,11 @@ Feature: Login From Health Unlocked Pages
     
     Examples:
     |page|
-   # |Homepage|
-    #|Community_Homepage|
-    #|Posts_Questions|
-    #|Polls|
-    #|Members|
+    |Homepage|
+    |Community_Homepage|
+    |Posts_Questions|
+    |Polls|
+    |Members|
     |Individual_Post_Question|
 
 	   
