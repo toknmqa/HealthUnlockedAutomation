@@ -22,7 +22,7 @@ public class SeleniumFactory extends Thread {
 
     public enum BrowserName{FIREFOX, GOOGLECHROME, SAUCELABS, OPERA, IE, GRID}
     public static BrowserName currentDriver;
-    private static final BrowserName useThisDriver = BrowserName.FIREFOX;//valueOf(System.getProperty("browser"));
+    private static final BrowserName useThisDriver = BrowserName.FIREFOX; //valueOf(System.getProperty("browser"));
 
     public static WebDriver get() {
         if (aDriver==null) {

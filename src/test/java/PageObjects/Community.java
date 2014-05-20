@@ -90,6 +90,8 @@ public class Community extends WebPageHelpers {
 
 	public void openIndividualPostQuestion() {
 
+		wait = new WebDriverWait(getDriver(), 10);
+		
 		WebElement postTable = getDriver().findElement(By
 				.className("panel-body"));
 		List<WebElement> arrayPost = postTable.findElements(By.tagName("li"));
@@ -103,25 +105,29 @@ public class Community extends WebPageHelpers {
 		 index = rn.nextInt(random);
 		}
 		WebElement randomPost = arrayPost.get(index).findElement(
-				By.className("media-heading")).findElement(By.tagName("a"));
+				By.className("media-heading")).findElement(By.tagName("span"));
 		verifyLocation = randomPost.getText();
 		Actions builder = new Actions(getDriver());
 		builder.moveToElement(randomPost).sendKeys(Keys.UP);
 		Action ac = builder.build();
 		ac.perform();
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException iex) {
+			iex.toString();
+		}
 		
 		randomPost.click();
 
-		wait = new WebDriverWait(getDriver(), 10);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By
 				.cssSelector("h1[data-reactid='.0.3.1.0.2']")));
 
 		String postHeading = getDriver().findElement(
 				By.cssSelector("h1[data-reactid='.0.3.1.0.2']")).getText();
 		
-		String removeText = " POPULAR";
-		verifyLocation = verifyLocation.replaceAll( "(?i)" + removeText + "" , "" ); 
-
+		postHeading = postHeading.replace("\n", " ").replace("\r", " ");
+		verifyLocation = verifyLocation.replace("\n", " ").replace("\r", " ");
+		
 		assertTrue(verifyLocation.equals(postHeading));
 
 		}else{

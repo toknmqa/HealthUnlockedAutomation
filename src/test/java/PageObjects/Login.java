@@ -36,7 +36,7 @@ public class Login extends WebPageHelpers {
 	public void loginPage(String page) {
 		if (page.equals("Homepage")) {
 			assertTrue(getDriver().getCurrentUrl().equals(
-					"https://bg-test.www.ppgdes.com/login"));
+					"https://healthunlocked.com/!bg"));
 			}else {
 			WebElement modal = getDriver()
 					.findElement(By.className("modal-content"));

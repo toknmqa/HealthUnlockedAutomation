@@ -29,7 +29,7 @@ public class WebPageHelpers {
 		// load page through selenium 2.0
 		String fullURL = System.getProperty("baseUrl") + url;
 		if ((url.contains("homepage"))) {
-			fullURL = "https://bg-test.www.ppgdes.com/";
+			fullURL = "https://healthunlocked.com/!bg";
 		}
 
 		System.out.println("Opening URL: " + fullURL);
