@@ -18,10 +18,4 @@ public class Index extends WebPageHelpers {
 			iex.toString();
 		}
 	}
-
-	public void uselessMethod() {
-
-		// This method is useless
-	}
-
 }

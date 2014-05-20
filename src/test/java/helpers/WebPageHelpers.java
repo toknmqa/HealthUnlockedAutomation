@@ -20,7 +20,7 @@ public class WebPageHelpers {
 		// load page through selenium 2.0
 		String fullURL = System.getProperty("baseUrl") + url;
 		if ((url.contains("homepage"))) {
-			fullURL = "https://healthunlocked.com/!bg";
+			fullURL = "https://bg-test.www.ppgdes.com";
 		}
 
 		System.out.println("Opening URL: " + fullURL);
@@ -41,20 +41,29 @@ public class WebPageHelpers {
 
 	}
 
-	// Check if you are on the homepage or another page
-	// Then it will click the log in button
-
-	public void loginButton(String page) {
-		if (page.equals("Homepage")) {
+	//Logs in on the homepage
+	
+	public void loginButtonHome() {
+		
 			driver.findElement(By.cssSelector("a[data-reactid='.0.0.1.0']"))
 					.click();
-		} else
-			driver.findElement(By.cssSelector("a[data-reactid='.0.1.0.0.0']"))
-					.click();
-		try {
+			try {
 			Thread.sleep(2000);
 		} catch (InterruptedException iex) {
 			iex.toString();
 		}
 	}
+
+	//logs in on every other page
+	public void loginButtonGlobal() {
+		
+		driver.findElement(By.cssSelector("a[data-reactid='.0.1.0.0.0']"))
+				.click();
+	try {
+		Thread.sleep(2000);
+	} catch (InterruptedException iex) {
+		iex.toString();
+	}
+}
+
 }
