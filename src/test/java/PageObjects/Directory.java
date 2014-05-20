@@ -26,6 +26,8 @@ public class Directory extends WebPageHelpers {
 		driver = SeleniumFactory.get();
 	}
 
+	//Opens a random community page
+	
 	public void openCommunity() {
 
 		wait = new WebDriverWait(driver, 10);

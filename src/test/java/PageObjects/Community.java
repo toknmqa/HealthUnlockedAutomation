@@ -22,7 +22,7 @@ public class Community extends WebPageHelpers {
 	String verifyLocation, communityURL;
 	int index;
 
-
+//Opens all posts page from a community
 
 	public void openPostsQuestions() {
 
