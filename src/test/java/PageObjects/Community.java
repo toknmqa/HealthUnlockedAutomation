@@ -88,6 +88,7 @@ public class Community extends WebPageHelpers {
 
 	}
 
+	//Checks a random post and confimrs the headings match
 	public void openIndividualPostQuestion() {
 
 		wait = new WebDriverWait(getDriver(), 10);

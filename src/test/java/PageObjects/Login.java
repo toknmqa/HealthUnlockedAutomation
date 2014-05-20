@@ -32,7 +32,8 @@ public class Login extends WebPageHelpers {
 	public static boolean loginURL;
 	WebDriverWait wait;
 
-	// verifies the user is on the login page and if not opens it
+	// verifies the user is on the login page
+	// If the user is not on the page an error is generated
 	public void loginPage(String page) {
 		if (page.equals("Homepage")) {
 			assertTrue(getDriver().getCurrentUrl().equals(

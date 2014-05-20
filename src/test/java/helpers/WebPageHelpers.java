@@ -22,7 +22,7 @@ public class WebPageHelpers {
 	
 	public static WebDriver getDriver(){
 		
-		return driver;//delete this comment 
+		return driver;
 	}
 
 	public static void openWebPage(String url) {
