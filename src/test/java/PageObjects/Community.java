@@ -7,14 +7,12 @@ import java.util.Random;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import helpers.SeleniumFactory;
 import helpers.WebPageHelpers;
 
 public class Community extends WebPageHelpers {
@@ -22,9 +20,9 @@ public class Community extends WebPageHelpers {
 	String verifyLocation, communityURL;
 	int index;
 
-//Opens all posts page from a community
+	// Opens all posts page from a community
 
-	public void openPostsQuestions() { 
+	public void openPostsQuestions() {
 
 		communityURL = getDriver().getCurrentUrl().toString();
 		communityURL = communityURL + "/posts";
@@ -40,6 +38,8 @@ public class Community extends WebPageHelpers {
 		assertTrue(postURL.equals(communityURL));
 
 	}
+
+	// Opens the Polls page from a community
 
 	public void openPolls() {
 
@@ -59,13 +59,15 @@ public class Community extends WebPageHelpers {
 
 	}
 
+	// Opens the Members page of a community
+
 	public void openMembers() {
 		communityURL = getDriver().getCurrentUrl().toString();
 		communityURL = communityURL + "/members";
 
-		WebElement member = getDriver().findElement(By
-				.cssSelector("span[data-reactid='.0.2.1.1.1.1.0.1.0']"));
-		
+		WebElement member = getDriver().findElement(
+				By.cssSelector("span[data-reactid='.0.2.1.1.1.1.0.1.0']"));
+
 		wait = new WebDriverWait(getDriver(), 10);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By
 				.cssSelector("span[data-reactid='.0.2.1.1.1.1.0.1.0']")));
@@ -88,53 +90,58 @@ public class Community extends WebPageHelpers {
 
 	}
 
-	//Checks a random post and confimrs the headings match
+	// Checks a random post and confirms the headings match
+
 	public void openIndividualPostQuestion() {
 
 		wait = new WebDriverWait(getDriver(), 10);
-		
-		WebElement postTable = getDriver().findElement(By
-				.className("panel-body"));
+
+		WebElement postTable = getDriver().findElement(
+				By.className("panel-body"));
 		List<WebElement> arrayPost = postTable.findElements(By.tagName("li"));
 		int random = (arrayPost.size() - 1);
 		Random rn = new Random();
-		if (random == 0 || random > 0){
-		
-			if (random == 0){
-			 index = 0;
-		}else{
-		 index = rn.nextInt(random);
-		}
-		WebElement randomPost = arrayPost.get(index).findElement(
-				By.className("media-heading")).findElement(By.tagName("span"));
-		verifyLocation = randomPost.getText();
-		Actions builder = new Actions(getDriver());
-		builder.moveToElement(randomPost).sendKeys(Keys.UP);
-		Action ac = builder.build();
-		ac.perform();
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException iex) {
-			iex.toString();
-		}
-		
-		randomPost.click();
+		if (random == 0 || random > 0) {
 
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By
-				.cssSelector("h1[data-reactid='.0.3.1.0.2']")));
+			if (random == 0) {
+				index = 0;
+			} else {
+				index = rn.nextInt(random);
+			}
+			WebElement randomPost = arrayPost.get(index)
+					.findElement(By.className("media-heading"))
+					.findElement(By.tagName("span"));
+			verifyLocation = randomPost.getText();
+			Actions builder = new Actions(getDriver());
+			builder.moveToElement(randomPost).sendKeys(Keys.UP);
+			Action ac = builder.build();
+			ac.perform();
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException iex) {
+				iex.toString();
+			}
 
-		String postHeading = getDriver().findElement(
-				By.cssSelector("h1[data-reactid='.0.3.1.0.2']")).getText();
-		
-		postHeading = postHeading.replace("\n", " ").replace("\r", " ");
-		verifyLocation = verifyLocation.replace("\n", " ").replace("\r", " ");
-		
-		assertTrue(verifyLocation.equals(postHeading));
+			randomPost.click();
 
-		}else{
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By
+					.cssSelector("h1[data-reactid='.0.3.1.0.2']")));
+
+			String postHeading = getDriver().findElement(
+					By.cssSelector("h1[data-reactid='.0.3.1.0.2']")).getText();
+
+			postHeading = postHeading.replace("\n", " ").replace("\r", " ");
+			verifyLocation = verifyLocation.replace("\n", " ").replace("\r",
+					" ");
+
+			assertTrue(verifyLocation.equals(postHeading));
+
+		} else {
 			System.out.println("No posts - checking login from Community page");
 		}
 	}
+
+	// Opens the correct element from the community page for T101
 
 	public void openCommunityPages(String page) {
 		if (page.equals("Posts_Questions")) {

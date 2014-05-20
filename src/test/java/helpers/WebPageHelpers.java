@@ -2,26 +2,17 @@ package helpers;
 
 import static org.junit.Assert.assertTrue;
 
-import java.util.List;
-
-import org.apache.tools.ant.taskdefs.Get;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import PageObjects.Community;
-import PageObjects.Login;
 
 public class WebPageHelpers {
 
 	private static WebDriver driver = SeleniumFactory.get();
 	String verifyLocation;
-	
-	public static WebDriver getDriver(){
-		
+
+	public static WebDriver getDriver() {
+
 		return driver;
 	}
 
@@ -46,9 +37,13 @@ public class WebPageHelpers {
 		WebElement directoryPage = driver.findElement(By
 				.cssSelector("h2[data-reactid='.0.2.1.0.0']"));
 		verifyLocation = directoryPage.getText();
-		assertTrue(verifyLocation.equals("Find and follow communities on the directory!"));
+		assertTrue(verifyLocation
+				.equals("Find and follow communities on the directory!"));
 
 	}
+
+	// Check if you are on the homepage or another page
+	// Then it will click the log in button
 
 	public void loginButton(String page) {
 		if (page.equals("Homepage")) {

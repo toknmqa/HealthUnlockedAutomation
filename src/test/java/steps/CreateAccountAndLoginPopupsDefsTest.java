@@ -1,17 +1,9 @@
 package steps;
 
-import static org.junit.Assert.assertTrue;
-
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized.*;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-
 import PageObjects.Community;
 import PageObjects.Directory;
-import PageObjects.Login;
 import PageObjects.Index;
+import PageObjects.Login;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
