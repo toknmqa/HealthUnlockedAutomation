@@ -44,5 +44,4 @@ public class CreateAccountAndLoginPopupsDefsTest {
 	public void I_should_be_on_the_login_from_page(String page) {
 		verifyLogin.loginPage(page);
 	}
-
 }

@@ -26,7 +26,7 @@ public class Directory extends WebPageHelpers {
 		driver = SeleniumFactory.get();
 	}
 
-	// Opens a random community page
+	//Opens a random community page
 
 	public void openCommunity() {
 

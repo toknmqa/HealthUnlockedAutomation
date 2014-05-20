@@ -1,8 +1,8 @@
 package PageObjects;
 
+
 import static org.junit.Assert.assertTrue;
 import helpers.WebPageHelpers;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
