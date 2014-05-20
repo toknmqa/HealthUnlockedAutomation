@@ -24,7 +24,7 @@ public class Community extends WebPageHelpers {
 
 
 
-	public void openPostsQuestions() { //Another test comment
+	public void openPostsQuestions() { 
 
 		communityURL = getDriver().getCurrentUrl().toString();
 		communityURL = communityURL + "/posts";
