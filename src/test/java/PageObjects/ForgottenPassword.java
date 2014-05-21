@@ -10,17 +10,13 @@ import helpers.WebPageHelpers;
 
 
 
-public class ForgottenPassword extends WebPageHelpers {
-	
-	WebDriverWait wait;
-	
+public class ForgottenPassword extends WebPageHelpers {	
 	
 	// Waits for the Header to load
 	// Verifies it is the correct header
 	
 	public void forgottenPasswordPage(){
-		
-		wait = new WebDriverWait(getDriver(), 10);
+
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h1[data-reactid='.0.2.1.0.0']")));
 		
 		WebElement wHeading = getDriver().findElement(By.cssSelector("h1[data-reactid='.0.2.1.0.0']"));

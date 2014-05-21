@@ -19,16 +19,24 @@ public class Community extends WebPageHelpers {
 	WebDriverWait wait;
 	String verifyLocation, communityURL;
 	int index;
+	private String name;
 	
+	public String getName(){
+		return name;
+	}
 	private String followCommunityButtonCSS = "button[id*='follow']";
 	//Opens all posts page from a community
-
+	
+	public void setName(){
+		communityURL = getDriver().getCurrentUrl();
+		int lastDir = communityURL.lastIndexOf('/');
+		name = communityURL.substring(lastDir+1);
+	}
+	
 	public void openPostsQuestions() {
 
 		communityURL = getDriver().getCurrentUrl().toString();
 		communityURL = communityURL + "/posts";
-
-		wait = new WebDriverWait(getDriver(), 10);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By
 				.cssSelector("span[data-reactid='.0.2.1.1.0.0.0.1.0']")));
 		getDriver().findElement(
@@ -47,7 +55,6 @@ public class Community extends WebPageHelpers {
 		communityURL = getDriver().getCurrentUrl().toString();
 		communityURL = communityURL + "/polls";
 
-		wait = new WebDriverWait(getDriver(), 10);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By
 				.cssSelector("span[data-reactid='.0.2.1.1.1.0.0.1.0']")));
 		getDriver().findElement(
@@ -69,7 +76,6 @@ public class Community extends WebPageHelpers {
 		WebElement member = getDriver().findElement(
 				By.cssSelector("span[data-reactid='.0.2.1.1.1.1.0.1.0']"));
 
-		wait = new WebDriverWait(getDriver(), 10);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By
 				.cssSelector("span[data-reactid='.0.2.1.1.1.1.0.1.0']")));
 		Actions builder = new Actions(getDriver());
@@ -94,9 +100,7 @@ public class Community extends WebPageHelpers {
 	// Checks a random post and confirms the headings match
 
 	public void openIndividualPostQuestion() {
-
-		wait = new WebDriverWait(getDriver(), 10);
-
+		
 		WebElement postTable = getDriver().findElement(
 				By.className("panel-body"));
 		List<WebElement> arrayPost = postTable.findElements(By.tagName("li"));

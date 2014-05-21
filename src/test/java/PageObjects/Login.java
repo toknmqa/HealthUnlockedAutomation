@@ -15,7 +15,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class Login extends WebPageHelpers {
 
 	String sCurrentURL;
-	WebDriverWait wait;
 
 	// verifies the user is on the login page
 	// If the user is not on the page an error is generated
@@ -56,7 +55,6 @@ public class Login extends WebPageHelpers {
 	
 	public void loginAlert (){
 		
-		wait = new WebDriverWait(getDriver(), 10);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By
 				.className("alert-container")));
 		
@@ -90,7 +88,6 @@ public class Login extends WebPageHelpers {
 				By.xpath("/html/body/div/div/div/div/div[2]/a"));
 		navBox.click();
 
-		wait = new WebDriverWait(getDriver(), 10);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By
 				.xpath("/html/body/div/div/div/div/div[2]/ul")));
 		

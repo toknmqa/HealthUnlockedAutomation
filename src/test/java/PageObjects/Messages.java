@@ -32,7 +32,6 @@ public class Messages extends WebPageHelpers {
 		verifyLogin.loginDetails();
 		verifyLogin.clickLogin();
 
-		wait = new WebDriverWait(getDriver(), 10);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By
 				.xpath("/html/body/div/div/div/div/div[2]/a")));
 
@@ -40,7 +39,6 @@ public class Messages extends WebPageHelpers {
 				By.xpath("/html/body/div/div/div/div/div[2]/a"));
 		navBox.click();
 
-		wait = new WebDriverWait(getDriver(), 10);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By
 				.xpath("/html/body/div/div/div/div/div[2]/ul")));
 
@@ -65,7 +63,6 @@ public class Messages extends WebPageHelpers {
 		WebElement messBox = getDriver()
 				.findElement(By.className("media-list"));
 
-		wait = new WebDriverWait(getDriver(), 10);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By
 				.className("media")));
 

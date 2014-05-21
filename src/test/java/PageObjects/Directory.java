@@ -17,7 +17,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Directory extends WebPageHelpers {
 	WebDriver driver;
-	WebDriverWait wait;
 	String verifyLocation;
 	int index;
 
@@ -28,8 +27,6 @@ public class Directory extends WebPageHelpers {
 	//Opens a random community page
 
 	public void openCommunity() {
-
-		wait = new WebDriverWait(driver, 10);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By
 				.className("avatar-img")));
 

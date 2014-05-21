@@ -1,18 +1,36 @@
 package helpers;
 
 import static org.junit.Assert.assertTrue;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Arrays;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class WebPageHelpers {
+	
 
-	private static WebDriver driver = SeleniumFactory.get();
+
+	private static WebDriver driver;
+	protected WebDriverWait wait;
 	String verifyLocation;
 	public static final String dualModalCSSRegisterDiv = ".col-sm-6.simpleRegisterLogin-register";
+	
+	
 	public static WebDriver getDriver(){
-		
+		if (driver == null)
+			driver = SeleniumFactory.get();
 		return driver;
 	}
 
@@ -28,9 +46,17 @@ public class WebPageHelpers {
 		// Maximise browser window
 	}
 
+	public WebPageHelpers(){
+		wait = new WebDriverWait(getDriver(),10);
+	}
+	
+	public void waitForPageToLoad(String cssSelector){
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector(cssSelector)));
+	}
+	
 	// opens the Directory page
 	public void openDirectory() {
-
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("a[data-reactid='.0.0.1.1']")));
 		driver.findElement(By.cssSelector("a[data-reactid='.0.0.1.1']"))
 				.click();
 
@@ -65,5 +91,6 @@ public class WebPageHelpers {
 		iex.toString();
 	}
 }
+	
 
 }

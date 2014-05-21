@@ -12,6 +12,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -26,11 +27,7 @@ public class CreateAccount extends WebPageHelpers{
 	public CreateAccount(){
 		// Create a new user
 		user = newUserGenerator();
-		wait = new WebDriverWait(getDriver(), 10);
 	}
-	
-	//Wait Class
-	WebDriverWait wait;
 
 	//User Details
 	private HashMap<String,String> user;
@@ -48,6 +45,9 @@ public class CreateAccount extends WebPageHelpers{
 	String registerEmailInputCSS = "#register-email-input";
 	String registerUsernameInputCSS = "#register-username-input";
 	String registerPasswordInputCSS = "#register-password-input";
+	
+	//This CSS Selector has 'Account Created' after a new account has been created
+	public String greenBoxCSSSelector = ".greenBox>span>b"; 
 	
 	public void fillInModal(){
 		
@@ -83,6 +83,7 @@ public class CreateAccount extends WebPageHelpers{
 		//Confirm password
 		element = getDriver().findElement(By.cssSelector(confirmPasswordCSS));
 		element.sendKeys(user.get("password"));
+		element.sendKeys(Keys.TAB); //need to do this so passwords are compared
 		
 		//Change Date of Birth year so form can be submitted
 		element = getDriver().findElement(By.cssSelector(DOBYearSelector));
@@ -96,7 +97,6 @@ public class CreateAccount extends WebPageHelpers{
 		//Submit form
 		element = getDriver().findElement(By.cssSelector(SubmitButtonSelector));
 		element.click();
-		System.out.println("lol");
 	}
 
 	public String getTextFieldInput(WebElement element){

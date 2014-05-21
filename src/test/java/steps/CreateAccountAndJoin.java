@@ -1,7 +1,15 @@
 package steps;
 
+import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
+
+import org.openqa.selenium.WebDriver;
+
+import helpers.Address;
+import helpers.WebPageHelpers;
 import PageObjects.Community;
+import PageObjects.CreateAccount;
 import PageObjects.Directory;
 import PageObjects.Index;
 import cucumber.api.PendingException;
@@ -12,16 +20,21 @@ import cucumber.api.java.en.When;
 
 public class CreateAccountAndJoin {
 
-
+	private WebDriver driver = WebPageHelpers.getDriver();
 	private Community community = new Community();
 	private Directory directory = new Directory();
 	private Index home = new Index();
+	private CreateAccount createAccount = new CreateAccount();
+
 	
 @Given("^I have started the join process from a community by clicking “Follow Community”$")
 public void I_have_started_the_join_process_from_a_community_by_clicking_Follow_Community() throws Throwable {
     home.openHomepage();
     home.openDirectory();
     directory.openCommunity();
+    // Store the name of the community, this will be used for verification
+    // later
+    community.setName(); 
     boolean createAccountModalOpened = community.clickFollowButton();
     assertTrue(createAccountModalOpened);
 }
@@ -29,13 +42,18 @@ public void I_have_started_the_join_process_from_a_community_by_clicking_Follow_
 @When("^I click ‘create account’ on the create account page, enter the following username, (\\d+) and an email address$")
 public void I_click_create_account_on_the_create_account_page_enter_the_following_username_and_an_email_address(int arg1) throws Throwable {
     // Express the Regexp above with the code you wish you had
+	createAccount.fillInModal();
+	assertThat(driver.getCurrentUrl(), containsString("signup/"+community.getName())); // need to update this so that it gets the exact link
+	createAccount.fillSignInPage();
 	
 }
 
 @Then("^I should land on the Join page$")
 public void I_should_land_on_the_Join_page() throws Throwable {
     // Express the Regexp above with the code you wish you had
-    throw new PendingException();
+	community.waitForPageToLoad(createAccount.greenBoxCSSSelector);
+	assertThat(driver.getCurrentUrl(), is(equalTo(Address.HOMEPAGE+
+			"/join/"+community.getName())));// Get the community name
 }
 
 @Then("^the first community shown should be the community I joined from$")
