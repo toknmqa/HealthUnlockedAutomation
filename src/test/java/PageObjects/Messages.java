@@ -26,6 +26,7 @@ public class Messages extends WebPageHelpers {
 		home.openHomepage();
 		home.loginButtonHome();
 		verifyLogin.loginDetails();
+		verifyLogin.clickLogin();
 
 		wait = new WebDriverWait(getDriver(), 10);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By
