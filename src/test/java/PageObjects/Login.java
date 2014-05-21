@@ -2,6 +2,10 @@ package PageObjects;
 
 
 import static org.junit.Assert.assertTrue;
+
+import java.util.List;
+import java.util.Random;
+
 import helpers.WebPageHelpers;
 
 import org.openqa.selenium.By;
@@ -80,4 +84,14 @@ public class Login extends WebPageHelpers {
 
 		
 	}
+	
+public void clickSignUp(){
+		
+		WebElement wModal = getDriver().findElement(By.className("modal-content"));
+		List<WebElement> arrayModal = wModal.findElements(By.tagName("p"));
+		
+		WebElement wSignUp = arrayModal.get(1).findElement(By.tagName("a"));
+		String sSignUp = wSignUp.getText();
+		wSignUp.click();
+			}
 }

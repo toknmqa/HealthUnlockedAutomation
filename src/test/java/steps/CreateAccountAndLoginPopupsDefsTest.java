@@ -89,4 +89,19 @@ public class CreateAccountAndLoginPopupsDefsTest {
 
 		pass.forgottenPasswordPage();
 	}
+	
+
+@When("^I click ‘Sign up’$")
+public void I_click_Sign_up() {
+    
+	verifyLogin.clickSignUp();
+}
+
+@Then("^The modal turns into a create account page$")
+public void The_modal_turns_into_a_create_account_page() {
+    // Express the Regexp above with the code you wish you had
+}
+
+
+	
 }
