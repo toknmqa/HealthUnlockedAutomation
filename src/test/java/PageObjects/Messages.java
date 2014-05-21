@@ -12,12 +12,16 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import helpers.SeleniumFactory;
 import helpers.WebPageHelpers;
 
+/* Please note that the T301 script works when there is already a new message added to the
+ * message box. Currently this is done manually by login as another user and 
+ * send a message to the target user. The script will fail if the Message box is empty
+ * or it does not have a new message in it.*/
+
 public class Messages extends WebPageHelpers {
 
 	private Login verifyLogin = new Login();
 	private Index home = new Index();
 	WebDriverWait wait;
-	
 	
 	// This method login to user account from the Home page
 	// Then it navigates from the Login Page to the Message page
