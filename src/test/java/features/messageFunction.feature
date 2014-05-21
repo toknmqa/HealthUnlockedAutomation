@@ -9,7 +9,7 @@ Feature: Login From Health Unlocked Pages
     When I have unread messages  
     Then I should see a 'new' tag to the left of all unread messages 
   
-   
+  #@regression 
   Scenario: T302 - Checking message thread number 
     Given I am on logged in and on the Message page 
     When there is more than one message in a message thread  
