@@ -11,8 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Login extends WebPageHelpers {
 
-	String communityURL;
-	String currentURL;
+	String sCurrentURL;
 	WebDriverWait wait;
 
 	// verifies the user is on the login page
@@ -34,17 +33,20 @@ public class Login extends WebPageHelpers {
 	
 	public void loginDetails (){
 		
-		currentURL = getDriver().getCurrentUrl().toString();
+		sCurrentURL = getDriver().getCurrentUrl().toString();
 		
 		
-		WebElement loginName = getDriver().findElement(By.id("login-email-input"));
-		loginName.sendKeys("tokeeffe@qaworks.com");
+		WebElement wLoginName = getDriver().findElement(By.id("login-email-input"));
+		wLoginName.sendKeys("tokeeffe@qaworks.com");
 		
-		WebElement password = getDriver().findElement(By.id("login-password-input"));
-		password.sendKeys("nmqapass");
+		WebElement wPassword = getDriver().findElement(By.id("login-password-input"));
+		wPassword.sendKeys("nmqapass");
 		
-		WebElement login = getDriver().findElement(By.id("login-submit-button"));
-		login.click();
+	}
+	public void clickLogin (){
+		
+		WebElement wLogin = getDriver().findElement(By.id("login-submit-button"));
+		wLogin.click();
 	}
 	
 	//Verifies the user logs in by checking the alert pop up, the username and that they are still on the current url
@@ -58,13 +60,24 @@ public class Login extends WebPageHelpers {
 		WebElement loginAlert = getDriver().findElement(
 				By.className("alert-container"));
 		
-		WebElement userNameElement = getDriver().findElement(By.cssSelector("span[data-reactid='.0.1.0.5.0.1']"));
+		WebElement wUsername = getDriver().findElement(By.cssSelector("span[data-reactid='.0.1.0.5.0.1']"));
 		
-		String userName = userNameElement.getText();
+		String sUsername = wUsername.getText();
 		
 		assertTrue(loginAlert.isDisplayed());
-		assertTrue(userName.equals("tok9"));
-		assertTrue(currentURL.equals(getDriver().getCurrentUrl().toString()));
+		assertTrue(sUsername.equals("tok9"));
+		assertTrue(sCurrentURL.equals(getDriver().getCurrentUrl().toString()));
+		
+	}
+	
+	//Clicks the Forgotten Password button on the Modal
+	
+	
+	public void clickForgottenPassword(){
+		
+		WebElement wForgot = getDriver().findElement(By.className("modal-content")).findElement(By.tagName("a"));
+		wForgot.click();
+
 		
 	}
 }
