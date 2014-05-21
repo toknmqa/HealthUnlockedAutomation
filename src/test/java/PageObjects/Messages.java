@@ -15,7 +15,7 @@ import helpers.WebPageHelpers;
 /* Please note that the T301 script works when there is already a new message added to the
  * message box. Currently this is done manually by login as another user and 
  * send a message to the target user. The script will fail if the Message box is empty
- * or it does not have a new message in it.*/
+ * or it does not have a new message in it. */
 
 public class Messages extends WebPageHelpers {
 
