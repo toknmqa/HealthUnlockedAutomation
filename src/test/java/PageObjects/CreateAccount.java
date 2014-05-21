@@ -121,4 +121,17 @@ public class CreateAccount extends WebPageHelpers{
 		 user.put("email", "test"+num+"@test.com");
 		 return user;
 	}
+	
+	//Verifies the user is on the Create Account page
+	
+	public void verifyCreateAccount(){
+		
+		WebElement wHeading = getDriver().findElement(
+				By.cssSelector("h1[data-reactid='.0.1.1.0.0']"));
+		
+		String sHeading = wHeading.getText();
+		
+		assertTrue(sHeading.equals("Create your HealthUnlocked account"));
+		
+	}
 }
