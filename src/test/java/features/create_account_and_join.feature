@@ -1,6 +1,5 @@
 Feature: Joining a group
 	
-	@regression
 	Scenario Outline: Joining a group without having an account
 		Given I have started the join process from a community by clicking “Follow Community”
 		When I click ‘create account’ on the create account page, enter the following username, <password> and an email address
