@@ -25,7 +25,7 @@ Feature: Login From Health Unlocked Pages
 	When I click Log in
 	Then The modal disappears and I remain on the same page but now logged in
 
-  @regression 
+  @regression
   Scenario: T103 - Forgotten Password Modal
 	Given I’m on the Log in modal
 	When I click forgotten your password
