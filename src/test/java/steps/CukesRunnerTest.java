@@ -8,7 +8,7 @@ import cucumber.api.junit.Cucumber;
 
 	@RunWith(Cucumber.class)
 	@Cucumber.Options(
-features = {"src/test/java/features/create_account_and_login_popups.feature"},
+features = {"src/test/java/features"},
 //glue = {"src/test/java/steps/CreateAccountAndLoginPopupsDefs.java"},
 tags={"@regression"}
 			)

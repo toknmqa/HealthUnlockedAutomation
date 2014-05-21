@@ -3,7 +3,7 @@ Feature: Login From Health Unlocked Pages
 	I want to be able to login
 	So that I can enter the site
 	
-  #@regression 	
+  @regression 	
   Scenario Outline: T101 - login from HU pages
     Given I am on the HU <page>
     When I click Log in on <page>
@@ -18,14 +18,14 @@ Feature: Login From Health Unlocked Pages
     |Members|
     |Individual_Post_Question|
 
-  #@regression 
+  @regression 
   Scenario: T102 - login using valid credentials
 
 	Given I enter my valid login credentials
 	When I click Log in
 	Then The modal disappears and I remain on the same page but now logged in
 
-  #@regression 
+  #@regression
   Scenario: T103 - Forgotten Password Modal
 	Given I’m on the Log in modal
 	When I click forgotten your password

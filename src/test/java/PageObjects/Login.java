@@ -82,6 +82,22 @@ public class Login extends WebPageHelpers {
 		WebElement wForgot = getDriver().findElement(By.className("modal-content")).findElement(By.tagName("a"));
 		wForgot.click();
 
+	}
+	
+	//The method log the user out
+	public void logoutFromAccount() {
+		
+		WebElement navBox = getDriver().findElement(
+				By.xpath("/html/body/div/div/div/div/div[2]/a"));
+		navBox.click();
+
+		wait = new WebDriverWait(getDriver(), 10);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By
+				.xpath("/html/body/div/div/div/div/div[2]/ul")));
+		
+		WebElement navPop = getDriver().findElement(
+				By.xpath("/html/body/div/div/div/div/div[2]/ul"));
+		navPop.findElement(By.className("icon-cancel")).click();
 		
 	}
 	
