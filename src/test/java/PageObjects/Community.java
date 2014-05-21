@@ -19,7 +19,8 @@ public class Community extends WebPageHelpers {
 	WebDriverWait wait;
 	String verifyLocation, communityURL;
 	int index;
-
+	
+	private String followCommunityButtonCSS = "button[id*='follow']";
 	//Opens all posts page from a community
 
 	public void openPostsQuestions() {
@@ -160,5 +161,13 @@ public class Community extends WebPageHelpers {
 			System.out.println(page);
 		}
 
+	}
+	
+	public boolean clickFollowButton(){
+		getDriver().findElement(By.cssSelector(followCommunityButtonCSS)).click();
+		String dualModalText = getDriver().findElement(By.cssSelector(WebPageHelpers.dualModalCSSRegisterDiv + ">h2")).getText();
+		if (dualModalText.equals("Create account"))
+			return true;
+		return false;
 	}
 }

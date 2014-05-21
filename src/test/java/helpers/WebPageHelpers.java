@@ -10,7 +10,7 @@ public class WebPageHelpers {
 
 	private static WebDriver driver = SeleniumFactory.get();
 	String verifyLocation;
-	
+	public static final String dualModalCSSRegisterDiv = ".col-sm-6.simpleRegisterLogin-register";
 	public static WebDriver getDriver(){
 		
 		return driver;

@@ -1,7 +1,6 @@
 package PageObjects;
 
 import static org.junit.Assert.assertTrue;
-import helpers.SeleniumFactory;
 import helpers.WebPageHelpers;
 
 import java.util.List;
@@ -23,7 +22,7 @@ public class Directory extends WebPageHelpers {
 	int index;
 
 	public Directory() {
-		driver = SeleniumFactory.get();
+		driver = WebPageHelpers.getDriver();
 	}
 
 	//Opens a random community page
