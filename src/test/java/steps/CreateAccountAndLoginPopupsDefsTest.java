@@ -61,13 +61,13 @@ public class CreateAccountAndLoginPopupsDefsTest {
 	@When("I click Log in$")
 	public void I_click_log_in() throws Throwable {
 		verifyLogin.clickLogin();
-
 	}
 
 	@Then("The modal disappears and I remain on the same page but now logged in$")
 	public void The_modal_disappears_and_I_remain_on_the_same_page_but_now_logged_in()
 			throws Throwable {
 		verifyLogin.loginAlert();
+		verifyLogin.logoutFromAccount();
 	}
 
 	@Given("^I’m on the Log in modal$")
