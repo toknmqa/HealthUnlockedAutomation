@@ -1,6 +1,7 @@
 package steps;
 
 import PageObjects.Community;
+import PageObjects.CreateAccount;
 import PageObjects.Directory;
 import PageObjects.ForgottenPassword;
 import PageObjects.Index;
@@ -11,7 +12,8 @@ import cucumber.api.java.en.When;
 
 public class CreateAccountAndLoginPopupsDefsTest {
 
-	private Login verifyLogin = new Login();
+	private Login login = new Login();
+	private CreateAccount createAcc = new CreateAccount();
 	private Index home = new Index();
 	private Community com = new Community();
 	private Directory dir = new Directory();
@@ -47,7 +49,7 @@ public class CreateAccountAndLoginPopupsDefsTest {
 	@Then("^I should be on the login from (.*)$")
 	public void I_should_be_on_the_login_from_page(String page)
 			throws Throwable {
-		verifyLogin.loginPage(page);
+		login.loginPage(page);
 	}
 
 	@Given("I enter my valid login credentials$")
@@ -55,19 +57,19 @@ public class CreateAccountAndLoginPopupsDefsTest {
 		home.openHomepage();
 		home.openDirectory();
 		home.loginButtonGlobal();
-		verifyLogin.loginDetails();
+		login.loginDetails();
 	}
 
 	@When("I click Log in$")
 	public void I_click_log_in() throws Throwable {
-		verifyLogin.clickLogin();
+		login.clickLogin();
 	}
 
 	@Then("The modal disappears and I remain on the same page but now logged in$")
 	public void The_modal_disappears_and_I_remain_on_the_same_page_but_now_logged_in()
 			throws Throwable {
-		verifyLogin.loginAlert();
-		verifyLogin.logoutFromAccount();
+		login.loginAlert();
+		login.logoutFromAccount();
 	}
 
 	@Given("^I’m on the Log in modal$")
@@ -81,7 +83,7 @@ public class CreateAccountAndLoginPopupsDefsTest {
 	@When("^I click forgotten your password$")
 	public void I_click_forgotten_your_password() {
 		
-		verifyLogin.clickForgottenPassword();
+		login.clickForgottenPassword();
 	}
 
 	@Then("^The modal turns into a forgot password page$")
@@ -89,4 +91,21 @@ public class CreateAccountAndLoginPopupsDefsTest {
 
 		pass.forgottenPasswordPage();
 	}
+	
+
+@When("^I click ‘Sign up’$")
+public void I_click_Sign_up() {
+    
+	login.clickSignUp();
+}
+
+@Then("^The modal turns into a create account page$")
+public void The_modal_turns_into_a_create_account_page() {
+    
+	createAcc.verifyCreateAccount();
+	
+}
+
+
+	
 }

@@ -2,6 +2,9 @@ package PageObjects;
 
 
 import static org.junit.Assert.assertTrue;
+
+import java.util.List;
+
 import helpers.WebPageHelpers;
 
 import org.openqa.selenium.By;
@@ -96,4 +99,15 @@ public class Login extends WebPageHelpers {
 		navPop.findElement(By.className("icon-cancel")).click();
 		
 	}
+	
+	//Clicks the sign up text
+	
+public void clickSignUp(){
+		
+		WebElement wModal = getDriver().findElement(By.className("modal-content"));
+		List<WebElement> arrayModal = wModal.findElements(By.tagName("p"));
+		
+		WebElement wSignUp = arrayModal.get(1).findElement(By.tagName("a"));
+		wSignUp.click();
+			}
 }

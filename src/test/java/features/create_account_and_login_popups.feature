@@ -30,3 +30,9 @@ Feature: Login From Health Unlocked Pages
 	Given I’m on the Log in modal
 	When I click forgotten your password
 	Then The modal turns into a forgot password page
+	
+  @regression
+  Scenario: T104 - signup from Login modal
+	Given I’m on the Log in modal
+	When I click ‘Sign up’ 
+	Then The modal turns into a create account page
