@@ -13,7 +13,9 @@ import java.util.HashMap;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import helpers.Address;
 import helpers.WebPageHelpers;
@@ -24,8 +26,12 @@ public class CreateAccount extends WebPageHelpers{
 	public CreateAccount(){
 		// Create a new user
 		user = newUserGenerator();
+		wait = new WebDriverWait(getDriver(), 10);
 	}
 	
+	//Wait Class
+	WebDriverWait wait;
+
 	//User Details
 	private HashMap<String,String> user;
 	
@@ -35,10 +41,17 @@ public class CreateAccount extends WebPageHelpers{
 	String passwordInputCSS = "#simpleRegister-password-input";
 	String createAnAccountButtonCSS = "#simpleRegister-submit-button";
 	String confirmPasswordCSS = "#register-cpassword-input";
+	
 	String DOBYearSelector = "#register-birthYear-input";
 	String FemaleGenderSelector = "#register-genderFemale-input";
 	String SubmitButtonSelector = "#register-submit-button";
+	String registerEmailInputCSS = "#register-email-input";
+	String registerUsernameInputCSS = "#register-username-input";
+	String registerPasswordInputCSS = "#register-password-input";
+	
 	public void fillInModal(){
+		
+		
 		//Insert email address in the modal
 		WebElement element = getDriver().findElement(By.cssSelector(emailInputCSS));
 		element.sendKeys(user.get("email"));
@@ -57,12 +70,14 @@ public class CreateAccount extends WebPageHelpers{
 	}
 
 	public void fillSignInPage() {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(registerUsernameInputCSS)));
+		
 		//Verify details are correct
-		WebElement element = getDriver().findElement(By.cssSelector(usernameInputCSS));
+		WebElement element = getDriver().findElement(By.cssSelector(registerUsernameInputCSS));
 		assertThat(getTextFieldInput(element), is(equalTo(user.get("username"))));
-		element = getDriver().findElement(By.cssSelector(emailInputCSS));
+		element = getDriver().findElement(By.cssSelector(registerEmailInputCSS));
 		assertThat(getTextFieldInput(element), is(equalTo(user.get("email"))));
-		element = getDriver().findElement(By.cssSelector(passwordInputCSS));
+		element = getDriver().findElement(By.cssSelector(registerPasswordInputCSS));
 		assertThat(getTextFieldInput(element), is(equalTo(user.get("password"))));
 		
 		//Confirm password
@@ -70,9 +85,8 @@ public class CreateAccount extends WebPageHelpers{
 		element.sendKeys(user.get("password"));
 		
 		//Change Date of Birth year so form can be submitted
-		element = getDriver().findElement(By.className(DOBYearSelector));
+		element = getDriver().findElement(By.cssSelector(DOBYearSelector));
 		Select year = new Select(element);
-		year.deselectAll();
 		year.selectByVisibleText("1984");
 		
 		//Select Gender
